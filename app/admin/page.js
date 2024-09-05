@@ -10,9 +10,9 @@ const AdminLogin = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        if (email === 'prateekpaudel2017@gmail.com' && password === 'prateekpaudel2017@gmail.com') {
+        if (email === process.env.NEXT_PUBLIC_ADMIN_EMAIL && password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
             localStorage.setItem('isAdminLoggedIn', 'true');
-            router.push('/admin/dashboard'); 
+            router.push('/admin/dashboard');
         } else {
             setError('Invalid credentials');
         }
