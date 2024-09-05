@@ -4,7 +4,6 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 
 import '/public/global.css';
-
 const Home = () => {
     const [scores, setScores] = useState({ pratik: 0, nick: 0 });
 
@@ -34,14 +33,14 @@ const Home = () => {
                 <div className="card">
                     <div className="wrapper">
                         <div className="text-center">
-                            <h3 className="text-lg font-semibold text-green-600 mb-2"> {scores.pratik} </h3>
+                            <h1> {scores.pratik} </h1>
                         </div>
-                        <img src="first-image.png"
+                        <img src="/pratik.png"
                              className="cover-image" alt="Pratik Paudel"/>
                     </div>
-                    <img src="title-first" className="title"
+                    <img src="/title-pratik.png" className="title"
                          alt="Pratik Paudel"/>
-                    <img src="first-image-hover.webp"
+                    <img src="/hover-one.png"
                          className="character" alt="Pratik Paudel"/>
                 </div>
             </a>
@@ -52,12 +51,12 @@ const Home = () => {
                         <div className="text-center">
                             <h3 className="text-lg font-semibold text-blue-600 mb-2">{scores.nick}</h3>
                         </div>
-                        <img src="first-image.png"
+                        <img src="/nick.png"
                              className="cover-image" alt=""/>
                     </div>
-                    <img src="title-second-image" className="title"
+                    <img src="/title-nick.png" className="title"
                          alt="Nick Batcheller"/>
-                    <img src="2nd-image-hover.webp"
+                    <img src="/hover-two.png"
                          className="character" alt="Nick Batcheller"/>
                 </div>
             </a>
