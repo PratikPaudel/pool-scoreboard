@@ -1,0 +1,199 @@
+/* app/components/PoolTable.css */
+.pool-table {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: blur(10px);
+}
+
+.table-carpet {
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #116336;
+    box-shadow: 0px 0px 10px 3px #052F18 inset;
+    background: radial-gradient(ellipse at center, #16A757 0%, #116336 85%);
+}
+
+.table-border {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: 20px solid #8e1111;
+    box-shadow: 0px 0px 5px 1px #000 inset;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.pocket {
+    display: none;
+    position: absolute;
+    width: 43px;
+    height: 43px;
+    background: #484040;
+    z-index: 3;
+}
+
+.pocket.top-left {
+    display: block;
+    top: -20px;
+    left: -20px;
+    border-radius: 8px 0 0 0;
+}
+
+.pocket.top-center {
+    display: block;
+    top: -20px;
+    left: 50%;
+    width: 50px;
+    height: 20px;
+    margin-left: -30px;
+}
+
+.pocket.top-right {
+    display: block;
+    top: -20px;
+    right: -20px;
+    border-radius: 0 8px 0 0;
+}
+
+.pocket.bottom-right {
+    display: block;
+    bottom: -20px;
+    right: -20px;
+    border-radius: 0 0 8px 0;
+}
+
+.pocket.bottom-center {
+    display: block;
+    bottom: -20px;
+    left: 50%;
+    width: 50px;
+    height: 20px;
+    margin-left: -30px;
+}
+
+.pocket.bottom-left {
+    display: block;
+    bottom: -20px;
+    left: -20px;
+    border-radius: 0 0 0 8px;
+}
+
+.hole {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    z-index: 4;
+    background: #2b2b2b;
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px #000;
+}
+
+.hole.top-left {
+    top: -10px;
+    left: -10px;
+}
+
+.hole.bottom-left {
+    bottom: -10px;
+    left: -10px;
+}
+
+.hole.top-center {
+    top: -14px;
+    left: 50%;
+    margin-left: -25px;
+}
+
+.hole.bottom-center {
+    bottom: -14px;
+    left: 50%;
+    margin-left: -25px;
+}
+
+.hole.top-right {
+    top: -10px;
+    right: -10px;
+}
+
+.hole.bottom-right {
+    bottom: -10px;
+    right: -10px;
+}
+
+.billiard-cue {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -260px;
+    margin-top: -5px;
+    border-left: 350px solid #d2ae2a;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-radius: 6px 10px 10px 6px;
+    width: 0;
+    height: 8px;
+    z-index: 10;
+    animation: cueBounce 1000ms 3 forwards ease-in, cueHit 100ms 3000ms forwards ease-out;
+}
+
+.billiard-cue:before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: -2px;
+    left: -355px;
+    background: #000;
+    border-radius: 2px 0 0 2px;
+}
+
+.billiard-cue:after {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 4px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #000;
+    border-radius: 0 8px 8px 0;
+}
+
+@keyframes cueBounce {
+    0%, 100% {
+        transform: translateX(-15px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes cueHit {
+    from { transform: translateX(-30px); }
+    to { transform: translateX(12px); }
+}
+
+@keyframes moveWhiteBall {
+    75% {
+        transform: translate(470px, 163px);
+    }
+    100% {
+        transform: translate(470px, 163px) scale(0.85);
+    }
+}
+
+/* resets */
+* { box-sizing: border-box; margin: 0; padding: 0; }
