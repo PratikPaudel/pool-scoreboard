@@ -26,7 +26,7 @@
     display: block;
     width: 100vw;
     height: 100vh;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     border: 20px solid #8e1111;
@@ -136,7 +136,7 @@
     display: block;
     position: absolute;
     top: 50%;
-    left: -260px;
+    left: 0px;
     margin-top: -5px;
     border-left: 350px solid #d2ae2a;
     border-top: 2px solid transparent;

@@ -30,7 +30,7 @@ const Home = () => {
         <div className="relative py-4 md:py-10 flex flex-col gap-8 sm:gap-10 items-center">
             <PoolTable /> {/* Add the PoolTable component */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl text-center font-extrabold">
-                <span className="text-blue-600">Pool Game Score Tracker </span>
+                <span className="text-white-600">Pool Game Score Tracker </span>
             </h1>
             <div className={"flex flex-row gap-4 sm:gap-6 items-center"}>
                 <a href="" target="_blank" rel="noopener noreferrer">
@@ -53,7 +53,7 @@ const Home = () => {
                     <div className="card">
                         <div className="wrapper">
                             <div className="text-center">
-                                <h3 className="text-6xl background-animate bg-gradient-to-r from-indigo-500 via-green-500 to-pink-500 bg-clip-text flex justify-center items-center content-center w-full text-transparent text-6xl select-none py-10">{scores.nick}</h3>
+                                <h3 className="text-6xl background-animate bg-gradient-to-r from-purple-500 via-white-500 to-yellow-500 bg-clip-text flex justify-center items-center content-center w-full text-transparent text-6xl select-none py-10">{scores.nick}</h3>
                             </div>
                             <img src="/nick.png"
                                  className="cover-image" alt=""/>
