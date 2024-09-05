@@ -5,7 +5,7 @@ import { db } from '@/firebase';
 import { collection, getDocs, updateDoc, doc } from 'firebase/firestore';
 
 const AdminDashboard = () => {
-    const [scores, setScores] = useState({ you: 0, roommate: 0 });
+    const [scores, setScores] = useState({ pratik: 0, nick: 0 });
     const [user, setUser] = useState(null);
     const router = useRouter();
 
@@ -27,21 +27,20 @@ const AdminDashboard = () => {
     const fetchScores = async () => {
         const scoresCollection = collection(db, 'scores');
         const scoresSnapshot = await getDocs(scoresCollection);
-        const scoresData = scoresSnapshot.docs[0]?.data() || { you: 0, roommate: 0 };
+        let scoresData = { pratik: 0, nick: 0 };
+
+        scoresSnapshot.forEach(doc => {
+            scoresData[doc.id] = doc.data().score;
+        });
+
         setScores(scoresData);
     };
 
     const handleScoreUpdate = async (player) => {
         const newScores = { ...scores, [player]: scores[player] + 1 };
-        const scoresCollection = collection(db, 'scores');
-        const scoresSnapshot = await getDocs(scoresCollection);
+        const playerDocRef = doc(db, 'scores', player);
 
-        if (scoresSnapshot.empty) {
-            await addDoc(scoresCollection, newScores);
-        } else {
-            const scoreDoc = scoresSnapshot.docs[0];
-            await updateDoc(doc(db, 'scores', scoreDoc.id), newScores);
-        }
+        await updateDoc(playerDocRef, { score: newScores[player] });
 
         setScores(newScores);
     };
@@ -71,13 +70,15 @@ const AdminDashboard = () => {
                         <div className="divide-y divide-gray-200">
                             <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                                 <p>Current Scores:</p>
-                                <p>Nick: {scores.you}</p>
-                                <p>Pratik: {scores.roommate}</p>
+                                <p>Pratik: {scores.pratik}</p>
+                                console.log{scores.pratik};
+                                
+                                <p>Nick: {scores.nick}</p>
                                 <div className="flex space-x-4">
-                                    <button onClick={() => handleScoreUpdate('you')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                    <button onClick={() => handleScoreUpdate('nick')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                                         Nick Scored
                                     </button>
-                                    <button onClick={() => handleScoreUpdate('roommate')} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+                                    <button onClick={() => handleScoreUpdate('pratik')} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
                                         Pratik Scored
                                     </button>
                                 </div>
