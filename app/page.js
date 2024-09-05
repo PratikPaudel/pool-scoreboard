@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import Link from "next/link";
 import { db } from '../firebase';
 
 const Home = () => {
@@ -44,9 +43,10 @@ const Home = () => {
                 </div>
             </div>
             <div className="w-full max-w-md">
-                <Link href="/admin/login" className="block text-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
-                    Admin Login
-                </Link>
+                    <button
+                        className="w-full text-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                        <a href="/admin"> Go to Test Page </a>
+                    </button>
             </div>
         </div>
     );
