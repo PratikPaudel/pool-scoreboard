@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../../../firebase'; 
+import {collection, getDocs, doc, updateDoc, getDoc} from 'firebase/firestore';
+import { db } from '../../../firebase';
 
 const Dashboard = () => {
     const [scores, setScores] = useState({ pratik: 0, nick: 0 });
@@ -12,10 +12,10 @@ const Dashboard = () => {
         try {
             const scoresCollection = collection(db, 'scores');
             const scoresSnapshot = await getDocs(scoresCollection);
-            const scoresData = {};
+            const scoresData = { pratik: 0, nick: 0 };
 
             scoresSnapshot.forEach(doc => {
-                scoresData[doc.id] = doc.data().score;
+                scoresData[doc.id] = doc.data().score || 0;
             });
 
             setScores(scoresData);
@@ -25,21 +25,26 @@ const Dashboard = () => {
         }
     };
 
-    // Update score for a player (This function will remain as is if you are still using the API for updating)
+    // Update score for a player
     const updateScore = async (player) => {
         try {
-            const response = await fetch('../../api/update-scores', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ player }),
-            });
-            if (response.ok) {
-                fetchScores(); // Refresh scores after update
-            } else {
-                setError('Failed to update score');
+            const playerDocRef = doc(db, 'scores', player);
+            const playerDoc = await getDoc(playerDocRef);
+
+            if (!playerDoc.exists()) {
+                setError(`Player ${player} not found`);
+                return;
             }
+
+            // Increment the player's score
+            const currentScore = playerDoc.data().score || 0;
+            const newScore = currentScore + 1;
+
+            // Update the score in Firestore
+            await updateDoc(playerDocRef, { score: newScore });
+
+            // Refresh scores after update
+            fetchScores();
         } catch (err) {
             console.error('Error updating score:', err);
             setError('Failed to update score');
@@ -63,7 +68,6 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-
                 <div className="flex gap-4 mt-4">
                     <button
                         className="w-full text-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out"
@@ -78,7 +82,8 @@ const Dashboard = () => {
                         Pratik
                     </button>
                 </div>
-                <div className="flex justify-between items-center text-xl font-bold text-black p-6 rounded-lg shadow-lg">
+
+                <div className="flex justify-between items-center text-black p-6 rounded-lg shadow-lg border-black">
                     <div className="flex flex-col items-center space-y-2">
                         <div className="text-lg">Nick</div>
                         <div className="text-sm">Score: {scores.nick}</div>
