@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 
+import '/public/global.css';
+
 const Home = () => {
     const [scores, setScores] = useState({ pratik: 0, nick: 0 });
 
@@ -24,29 +26,47 @@ const Home = () => {
 
     return (
         <div className="py-4 md:py-10 flex flex-col gap-8 sm:gap-10 items-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl text-center font-extrabold text-gray-800">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl text-center font-extrabold">
                 <span className="text-blue-600">Pool Game Score Tracker </span>
             </h1>
-            <div className="bg-white shadow-lg rounded-lg border border-gray-200 p-6 max-w-md w-full">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-4 border-b border-gray-300 pb-2 text-center">
-                    Score Board
-                </h2>
-                <div className="flex justify-between items-center">
-                    <div className="text-center">
-                        <h3 className="text-lg font-semibold text-blue-600 mb-2">Nick</h3>
-                        <p className="text-3xl font-bold text-blue-600">{scores.nick}</p>
+            <div className={"flex flex-row gap-4 sm:gap-6 items-center"}>
+            <a href="" target="_blank" rel="noopener noreferrer">
+                <div className="card">
+                    <div className="wrapper">
+                        <div className="text-center">
+                            <h3 className="text-lg font-semibold text-green-600 mb-2"> {scores.pratik} </h3>
+                        </div>
+                        <img src="first-image.png"
+                             className="cover-image" alt="Pratik Paudel"/>
                     </div>
-                    <div className="text-center">
-                        <h3 className="text-lg font-semibold text-green-600 mb-2">Pratik</h3>
-                        <p className="text-3xl font-bold text-red-600">{scores.pratik}</p>
-                    </div>
+                    <img src="title-first" className="title"
+                         alt="Pratik Paudel"/>
+                    <img src="first-image-hover.webp"
+                         className="character" alt="Pratik Paudel"/>
                 </div>
+            </a>
+
+            <a href="" target="_blank" rel="noopener noreferrer">
+                <div className="card">
+                    <div className="wrapper">
+                        <div className="text-center">
+                            <h3 className="text-lg font-semibold text-blue-600 mb-2">{scores.nick}</h3>
+                        </div>
+                        <img src="first-image.png"
+                             className="cover-image" alt=""/>
+                    </div>
+                    <img src="title-second-image" className="title"
+                         alt="Nick Batcheller"/>
+                    <img src="2nd-image-hover.webp"
+                         className="character" alt="Nick Batcheller"/>
+                </div>
+            </a>
             </div>
             <div className="w-full max-w-md">
-                    <button
-                        className="w-full text-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
-                        <a href="/admin"> Go to Test Page </a>
-                    </button>
+                <button
+                    className="w-full text-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                    <a href="/admin"> Admin Login </a>
+                </button>
             </div>
         </div>
     );
