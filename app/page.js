@@ -5,13 +5,18 @@ import Link from "next/link";
 import { db } from '../firebase';
 
 const Home = () => {
-    const [scores, setScores] = useState({ you: 0, roommate: 0 });
+    const [scores, setScores] = useState({ pratik: 0, nick: 0 });
 
     useEffect(() => {
         const fetchScores = async () => {
             const scoresCollection = collection(db, 'scores');
             const scoresSnapshot = await getDocs(scoresCollection);
-            const scoresData = scoresSnapshot.docs[0]?.data() || { you: 0, roommate: 0 };
+            const scoresData = {};
+
+            scoresSnapshot.forEach(doc => {
+                scoresData[doc.id] = doc.data().score;
+            });
+
             setScores(scoresData);
         };
 
@@ -30,11 +35,11 @@ const Home = () => {
                 <div className="flex justify-between items-center">
                     <div className="text-center">
                         <h3 className="text-lg font-semibold text-blue-600 mb-2">Nick</h3>
-                        <p className="text-3xl font-bold text-blue-600">{scores.you}</p>
+                        <p className="text-3xl font-bold text-blue-600">{scores.nick}</p>
                     </div>
                     <div className="text-center">
                         <h3 className="text-lg font-semibold text-green-600 mb-2">Pratik</h3>
-                        <p className="text-3xl font-bold text-red-600">{scores.roommate}</p>
+                        <p className="text-3xl font-bold text-red-600">{scores.pratik}</p>
                     </div>
                 </div>
             </div>
