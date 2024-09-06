@@ -135,18 +135,26 @@ const Home = () => {
             </div>
 
             {/* Prediction buttons */}
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 md:gap-6 justify-center mt-2 sm:mt-4 w-full sm:w-auto">
-                {['pratik', 'nick'].map(player => (
-                    <button
-                        key={player}
-                        onClick={() => handlePrediction(player)}
-                        className={`mt-1 sm:mt-2 px-2 sm:px-4 py-1 sm:py-2 rounded text-xs sm:text-sm md:text-base ${userPrediction === player ? 'bg-green-500' : 'bg-blue-500'} text-white w-full sm:w-auto`}
-                        disabled={userPrediction !== null}
-                    >
-                        Predict {player.charAt(0).toUpperCase() + player.slice(1)} Wins
-                    </button>
-                ))}
+            <div className="flex flex-col items-center justify-center mt-4 w-full sm:w-auto">
+                <h2 className="text-xl sm:text-2xl text-white mb-4">
+                    Who do you think will win the next game?
+                </h2>
+                <div className="flex flex-row sm:flex-row gap-2 sm:gap-4 md:gap-6 justify-center">
+                    {['pratik', 'nick'].map(player => (
+                        <button
+                            key={player}
+                            onClick={() => handlePrediction(player)}
+                            type="button"
+                            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none rounded-lg border border-white-200 hover:bg-gray-100 hover:text-black focus:z-10 focus:ring-4 focus:ring-yellow-200 dark:focus:ring-gray-700 dark:bg-none dark:text-white-400 dark:border-white-600 dark:hover:text-black dark:hover:bg-white-700"
+                            disabled={userPrediction !== null}
+                            >
+                            {player.charAt(0).toUpperCase() + player.slice(1)}
+                        </button>
+                    ))}
+                </div>
             </div>
+
+
         </div>
     );
 };
