@@ -6,6 +6,7 @@ import { db } from '../firebase';
 import PoolTable from './components/PoolTable'; // Import the PoolTable component
 
 import '/public/global.css';
+import AnimatedCounter from "./components/animatedcounter";
 
 const Home = () => {
     const [scores, setScores] = useState({ pratik: 0, nick: 0 });
@@ -25,35 +26,45 @@ const Home = () => {
 
         fetchScores();
     }, []);
-
+    const text = "Pool Game Score Tracker";
     return (
         <div className="relative py-4 md:py-10 flex flex-col gap-8 sm:gap-10 items-center">
-            <PoolTable /> {/* Add the PoolTable component */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl text-center font-extrabold">
-                <span className="text-white-600">Pool Game Score Tracker </span>
+            <PoolTable/> 
+            <h1 className="sm:text-5xl md:text-8xl text-center font-bold py-6">
+            <span className="overflow-hidden bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent">
+                {text.match(/./gu).map((char, index) => (
+                    <span
+                    className="animate-text-reveal inline-block [animation-fill-mode:backwards]"
+                    key={`${char}-${index}`}
+                style={{animationDelay: `${index * 0.05}s`}}
+            >
+                {char === " " ? "\u00A0" : char}
+            </span>
+            ))}
+        </span>
             </h1>
-            <div className={"flex flex-row gap-4 sm:gap-6 items-center"}>
-                <a href="" target="_blank" rel="noopener noreferrer">
-                    <div className="card">
-                        <div className="wrapper">
-                            <div className="text-center">
-                                <h1 className="text-6xl background-animate bg-gradient-to-r from-indigo-500 via-green-500 to-pink-500 bg-clip-text flex justify-center items-center content-center w-full text-transparent text-6xl select-none py-10"> {scores.pratik} </h1>
-                            </div>
-                            <img src="/pratik.png"
-                                 className="cover-image" alt="Pratik Paudel"/>
-                        </div>
+
+    <div className={"flex flex-row gap-4 sm:gap-6 items-center"}>
+        <div className="card">
+            <div className="wrapper">
+                <div className="text-center">
+                    <h1 className="text-9xl background-animate text-white flex justify-center items-center content-center w-full select-none py-10">
+                        <AnimatedCounter value={scores.nick} /> </h1>
+                </div>
+                <img src="/pratik.png"
+                     className="cover-image" alt="Pratik Paudel"/>
+            </div>
                         <img src="/title-pratik.png" className="title"
                              alt="Pratik Paudel"/>
                         <img src="/hover-one.png"
                              className="character" alt="Pratik Paudel"/>
                     </div>
-                </a>
 
-                <a href="" target="_blank" rel="noopener noreferrer">
                     <div className="card">
                         <div className="wrapper">
                             <div className="text-center">
-                                <h3 className="text-6xl background-animate bg-gradient-to-r from-purple-500 via-white-500 to-yellow-500 bg-clip-text flex justify-center items-center content-center w-full text-transparent text-6xl select-none py-10">{scores.nick}</h3>
+                                <h1 className="text-9xl background-animate text-white flex justify-center items-center content-center w-full select-none py-10">
+                                    <AnimatedCounter value={scores.pratik} /> </h1>
                             </div>
                             <img src="/nick.png"
                                  className="cover-image" alt=""/>
@@ -63,11 +74,10 @@ const Home = () => {
                         <img src="/hover-two.png"
                              className="character" alt="Nick Batcheller"/>
                     </div>
-                </a>
             </div>
             <div className="w-full max-w-md">
                 <button
-                    className="w-full text-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                    className="w-full text-center bg-blue-600 text-white font-semibold py-3 px-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
                     <a href="/admin"> Admin Login </a>
                 </button>
             </div>
