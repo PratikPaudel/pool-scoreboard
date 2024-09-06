@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎱 Pool Game Score Tracker & Prediction App
 
-## Getting Started
+## 📜 Our Story
+> Over the past three years, my roommate Nick and I have shared countless pool matches, turning our friendly rivalry into a cherished part of our daily lives. Wanting to move beyond our old whiteboard scorekeeping and involve Nick's family in our games, I decided to create this web app that's become so much more than a simple score tracker. Built with React and Next.js, my app not only keeps our scores but lets our friends and Nick's family predict our match outcomes, bringing everyone closer to our friendly competition.
 
-First, run the development server:
+## 🌐 Live demo: [here](https://thisisnick.me)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
+- 🏠 **Home Page**: View current scores at a glance
+- 🔮 **Prediction Game**: Vote on who'll win the next match
+- 📱 **Responsive Design**: Built with React and Next.js
+- 🎨 **Sleek UI**: Styled with Tailwind CSS
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
+- React
+- Next.js
+- Tailwind CSS
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🤝 Contributing
+Feel free to contribute to this project! Whether it's adding new features, improving the UI, or fixing bugs, all contributions are welcome. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 📬 Contact
+Got questions? Reach out to me at [prateekpaudel2017@gmail.com](mailto:prateekpaudel2017@gmail.com)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p> Made with ❤️ by Pratik </p>
