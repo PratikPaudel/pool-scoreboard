@@ -9,6 +9,8 @@ const PoolTable = () => {
                     <div className="table-border"></div>
 
                     {/* pockets */}
+                {/* codepen.io/dias-ale/pen/WxbaZG */}
+                
                     <div className="pocket top-left"></div>
                     <div className="pocket top-center"></div>
                     <div className="pocket top-right"></div>
