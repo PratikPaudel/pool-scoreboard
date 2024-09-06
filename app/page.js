@@ -97,15 +97,15 @@ const Home = () => {
             <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl bg-gray-200 rounded-full h-4 sm:h-6 md:h-8 mb-2 sm:mb-4">
                 <div
                     className="bg-blue-600 h-4 sm:h-6 md:h-8 rounded-full transition-all duration-500 ease-in-out"
-                    style={{width: `${predictionPercents.pratik}%`}}
+                    style={{width: `${predictionPercents.nick}%`}}
                 />
             </div>
             <div className="text-center mb-3 sm:mb-6">
                 <p className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold">
-                    {predictionPercents.pratik.toFixed(1)}% think Pratik will win
+                    {predictionPercents.nick.toFixed(1)}% think Nick will win
                 </p>
                 <p className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold">
-                    {predictionPercents.nick.toFixed(1)}% think Nick will win
+                    {predictionPercents.pratik.toFixed(1)}% think Pratik will win
                 </p>
                 <p className="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2">
                     Total predictions: {totalPredictions}
@@ -116,7 +116,7 @@ const Home = () => {
                 {['pratik', 'nick'].map(player => (
                     <div key={player} className="card relative">
                         {winner === player && (
-                            <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 z-10">
+                            <div>
                                 <TrophyIcon className="w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12 text-yellow-400"/>
                             </div>
                         )}
@@ -136,7 +136,7 @@ const Home = () => {
 
             {/* Prediction buttons */}
             <div className="flex flex-col items-center justify-center mt-4 w-full sm:w-auto">
-                <h2 className="text-xl sm:text-2xl text-white mb-4">
+                <h2 className="text-xl sm:text-2xl text-white mb-4 text-center">
                     Who do you think will win the next game?
                 </h2>
                 <div className="flex flex-row sm:flex-row gap-2 sm:gap-4 md:gap-6 justify-center">
