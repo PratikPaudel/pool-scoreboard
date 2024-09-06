@@ -1,11 +1,14 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import {collection, getDocs, doc, updateDoc, getDoc} from 'firebase/firestore';
-import { db } from '../../../firebase';
+import { collection, getDocs, doc, updateDoc, getDoc } from 'firebase/firestore';
+import { auth, db } from '../../../firebase'; // Adjust the import path if needed
+import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 
 const Dashboard = () => {
     const [scores, setScores] = useState({ pratik: 0, nick: 0 });
     const [error, setError] = useState('');
+    const router = useRouter(); // Use Next.js router for redirection
 
     // Fetch scores from Firestore
     const fetchScores = async () => {
@@ -51,6 +54,17 @@ const Dashboard = () => {
         }
     };
 
+    // Handle logout
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            router.push('/'); // Redirect to homepage after logout
+        } catch (err) {
+            console.error('Error logging out:', err);
+            setError('Failed to log out');
+        }
+    };
+
     // Fetch the scores when the component mounts
     useEffect(() => {
         fetchScores();
@@ -93,6 +107,15 @@ const Dashboard = () => {
                         <div className="text-lg">Pratik</div>
                         <div className="text-sm">Score: {scores.pratik}</div>
                     </div>
+                </div>
+
+                <div className="mt-6">
+                    <button
+                        onClick={handleLogout}
+                        className="text-center bg-red-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-red-700 transition duration-300 ease-in-out"
+                    >
+                        Logout
+                    </button>
                 </div>
 
                 {error && (
