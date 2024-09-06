@@ -77,8 +77,8 @@ const Home = () => {
 
     return (
         <div className="relative py-4 md:py-10 flex flex-col gap-8 sm:gap-10 items-center">
-            <PoolTable />
-            <Header />
+            <PoolTable/>
+            <Header/>
             <h1 className="sm:text-5xl md:text-8xl text-center font-bold py-6">
                 <span
                     className="overflow-hidden bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent">
@@ -118,25 +118,37 @@ const Home = () => {
                     <div key={player} className="card relative">
                         {winner === player && (
                             <div className="absolute -top-4 -right-4 z-10">
-                                <TrophyIcon className="w-12 h-12 text-yellow-400" />
+                                <TrophyIcon className="w-12 h-12 text-yellow-400"/>
                             </div>
                         )}
                         <div className="wrapper">
                             <div className="text-center">
                                 <h1 className="text-9xl background-animate text-white flex justify-center items-center content-center w-full select-none py-10">
-                                    <AnimatedCounter value={scores[player]} speed={50} />
+                                    <AnimatedCounter value={scores[player]} speed={50}/>
                                 </h1>
                             </div>
-                            <img src={`/${player}.png`} className="cover-image" alt={player} />
+                            <img src={`/${player}.png`} className="cover-image" alt={player}/>
                         </div>
-                        <img src={`/title-${player}.png`} className="title" alt={`${player} title`} />
-                        <img src={`/hover-${player === 'pratik' ? 'one' : 'two'}.png`} className="character" alt={player} />
+                        <img src={`/title-${player}.png`} className="title" alt={`${player} title`}/>
+                        <img src={`/hover-${player === 'pratik' ? 'one' : 'two'}.png`} className="character"
+                             alt={player}/>
                     </div>
                 ))}
             </div>
 
             {/* Prediction buttons */}
-            
+            <div className="flex flex-row gap-4 sm:gap-6 justify-center mt-4">
+                {['pratik', 'nick'].map(player => (
+                    <button
+                        key={player}
+                        onClick={() => handlePrediction(player)}
+                        className={`mt-2 px-4 py-2 rounded ${userPrediction === player ? 'bg-green-500' : 'bg-blue-500'} text-white`}
+                        disabled={userPrediction !== null}
+                    >
+                        Predict {player.charAt(0).toUpperCase() + player.slice(1)} Wins Next Game
+                    </button>
+                ))}
+            </div>
         </div>
     );
 };
