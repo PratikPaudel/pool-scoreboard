@@ -105,3 +105,8 @@ body {
     opacity: 1;
     transform: translate3d(0%, -30%, 100px) scale(1.1); 
 }
+@media (max-width: 600px) { 
+    .card {
+        margin: 0 5px; /* Remove margin on small devices */
+    }
+}
