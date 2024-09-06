@@ -9,6 +9,7 @@ import '/public/global.css';
 import AnimatedCounter from "./components/animatedcounter";
 
 import TrophyIcon from "./components/trophy";
+import Header from "./components/header";
 
 const Home = () => {
     const [scores, setScores] = useState({ pratik: 0, nick: 0 });
@@ -38,6 +39,7 @@ const Home = () => {
     return (
         <div className="relative py-4 md:py-10 flex flex-col gap-8 sm:gap-10 items-center">
             <PoolTable/> 
+            <Header/> 
             <h1 className="sm:text-5xl md:text-8xl text-center font-bold py-6">
             <span className="overflow-hidden bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent">
                 {text.match(/./gu).map((char, index) => (
@@ -87,12 +89,6 @@ const Home = () => {
                     <img src="/title-nick.png" className="title" alt="Nick Batcheller"/>
                     <img src="/hover-two.png" className="character" alt="Nick Batcheller"/>
                 </div>
-            </div>
-
-            <div className="w-full max-w-md">
-                <button className="w-full text-center bg-blue-600 text-white font-semibold py-3 px-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <a href="/admin"> Admin Login </a>
-                </button>
             </div>
         </div>
     );
